@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
 const PORT = 3000;
@@ -10,7 +11,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 // MongoDB connection
-mongoose.connect('your_mongodb_atlas_connection_string', {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
