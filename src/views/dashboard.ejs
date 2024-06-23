@@ -5,10 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0A192F;
+            color: #CCD6F6;
+        }
+        .navbar {
+            background-color: #112240;
+        }
+        .navbar-brand, .nav-link {
+            color: #64FFDA !important;
+        }
+        .card {
+            background-color: #112240;
+            border: none;
+            margin-top: 2rem;
+        }
+        .btn-logout {
+            background-color: #64FFDA;
+            color: #0A192F;
+            border: none;
+        }
+        .btn-logout:hover {
+            background-color: #4CD2B7;
+            color: #0A192F;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Welcome, <%= username %>!</h2>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li>
+                </ul>
+                <form action="/logout" method="POST">
+                    <button type="submit" class="btn btn-logout">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Welcome, <%= username %>!</h2>
+                <p class="card-text">This is your personalized dashboard. Here you can view and manage your account information.</p>
+            </div>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

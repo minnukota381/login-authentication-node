@@ -5,204 +5,179 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
   <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #0A192F;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #8892B0;
+    }
+    
     .register-container {
-      background-color: #2f2f2f;
-      border-radius: 8px;
-      box-shadow: rgb(31 31 31 / 17%) 0px -23px 25px 0px inset,
-        rgb(108 108 108 / 23%) 0px -36px 30px 0px inset,
-        rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-        rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
-        rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+      background-color: #112240;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       padding: 40px;
-      max-width: 400px;
       width: 100%;
-      text-align: center;
-      margin: 0 auto;
+      max-width: 400px;
     }
     
     .form {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      max-width: 350px;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 20px;
-      position: relative;
+      gap: 20px;
     }
     
     .title {
       font-size: 28px;
-      color: royalblue;
+      color: #CCD6F6;
       font-weight: 600;
-      letter-spacing: -1px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      padding-left: 30px;
-    }
-    
-    .title::before,.title::after {
-      position: absolute;
-      content: "";
-      height: 16px;
-      width: 16px;
-      border-radius: 50%;
-      left: 0px;
-      background-color: royalblue;
-    }
-    
-    .title::before {
-      width: 18px;
-      height: 18px;
-      background-color: royalblue;
-    }
-    
-    .title::after {
-      width: 18px;
-      height: 18px;
-      animation: pulse 1s linear infinite;
-    }
-    
-    .message, .signin {
-      color: rgba(88, 87, 87, 0.822);
-      font-size: 14px;
-    }
-    
-    .signin {
       text-align: center;
+      margin-bottom: 10px;
     }
     
-    .signin a {
-      color: royalblue;
-    }
-    
-    .signin a:hover {
-      text-decoration: underline royalblue;
+    .message {
+      color: #8892B0;
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 20px;
     }
     
     .flex {
       display: flex;
-      width: 100%;
-      gap: 6px;
+      gap: 10px;
     }
     
     .form label {
       position: relative;
-    }
-    
-    .form label .input {
       width: 100%;
-      padding: 10px 10px 20px 10px;
-      outline: 0;
-      border: 1px solid rgba(105, 105, 105, 0.397);
-      border-radius: 10px;
     }
     
-    .form label .input + span {
+    .form .input {
+      width: 100%;
+      padding: 12px;
+      background-color: #0A192F;
+      border: 1px solid #233554;
+      border-radius: 4px;
+      color: #CCD6F6;
+      font-size: 14px;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form .input:focus {
+      border-color: #64FFDA;
+      outline: none;
+    }
+    
+    .form label span {
       position: absolute;
-      left: 10px;
-      top: 15px;
-      color: grey;
-      font-size: 0.9em;
-      cursor: text;
+      left: 12px;
+      top: 14px;
+      color: #8892B0;
+      font-size: 14px;
+      pointer-events: none;
       transition: 0.3s ease;
     }
     
-    .form label .input:placeholder-shown + span {
-      top: 15px;
-      font-size: 0.9em;
-    }
-    
-    .form label .input:focus + span,.form label .input:valid + span {
-      top: 0px;
-      font-size: 0.7em;
-      font-weight: 600;
-    }
-    
-    .form label .input:valid + span {
-      color: green;
+    .form .input:focus + span,
+    .form .input:not(:placeholder-shown) + span {
+      top: -20px;
+      left: 0;
+      font-size: 12px;
+      color: #64FFDA;
     }
     
     .submit {
+      background-color: #64FFDA;
+      color: #0A192F;
       border: none;
-      outline: none;
-      background-color: royalblue;
-      padding: 10px;
-      border-radius: 10px;
-      color: #fff;
+      padding: 12px;
+      border-radius: 4px;
       font-size: 16px;
-      transform: .3s ease;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
     
     .submit:hover {
-      background-color: rgb(56, 90, 194);
-      cursor: pointer;
+      background-color: #4CD2B7;
     }
     
-    @keyframes pulse {
-      from {
-        transform: scale(0.9);
-        opacity: 1;
-      }
+    .signin {
+      text-align: center;
+      font-size: 14px;
+    }
     
-      to {
-        transform: scale(1.8);
-        opacity: 0;
+    .signin a {
+      color: #64FFDA;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .signin a:hover {
+      color: #4CD2B7;
+    }
+    
+    @media (max-width: 480px) {
+      .flex {
+        flex-direction: column;
       }
-    }  
+    }
   </style>
 </head>
 <body>
   <div class="register-container">
     <form class="form" action="/register" method="POST">
-      <p class="title">Register</p>
-      <p class="message">Signup now and get full access to our app.</p>
+      <h1 class="title">Register</h1>
+      <p class="message">Sign up now and get full access to our app.</p>
       
       <div class="flex">
         <label>
-          <input class="input" type="text" name="firstName" required>
+          <input class="input" type="text" name="firstName" placeholder=" " required>
           <span>First Name</span>
         </label>
         
         <label>
-          <input class="input" type="text" name="lastName" required>
+          <input class="input" type="text" name="lastName" placeholder=" " required>
           <span>Last Name</span>
         </label>
       </div>
 
       <label>
-        <input class="input" type="text" name="username" required>
+        <input class="input" type="text" name="username" placeholder=" " required>
         <span>Username</span>
       </label>
 
       <label>
-        <input class="input" type="password" name="password" required>
+        <input class="input" type="password" name="password" placeholder=" " required>
         <span>Password</span>
       </label>
 
       <label>
-        <input class="input" type="password" name="confirmPassword" required>
+        <input class="input" type="password" name="confirmPassword" placeholder=" " required>
         <span>Confirm Password</span>
       </label>
 
       <label>
         <select class="input" name="gender" required>
-          <option value="" disabled selected>Gender</option>
+          <option value="" disabled selected>Select Gender</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
           <option value="other">Other</option>
         </select>
-        <span>Gender</span>
       </label>
 
       <label>
-        <input class="input" type="email" name="email" required>
+        <input class="input" type="email" name="email" placeholder=" " required>
         <span>Email</span>
       </label>
 
-      <button class="submit" type="submit">Submit</button>
-      <p class="signin">Already have an account? <a href="/login">Signin</a></p>
+      <button class="submit" type="submit">Register</button>
+      <p class="signin">Already have an account? <a href="/login">Sign in</a></p>
     </form>
   </div>
 </body>

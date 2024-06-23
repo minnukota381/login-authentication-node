@@ -5,21 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <style>
-    .login-container {
+    body {
+      font-family: 'Arial', sans-serif;
       background-color: #0A192F;
-      border-radius: 8px;
-      box-shadow: rgb(10 25 47 / 17%) 0px -23px 25px 0px inset,
-        rgb(108 108 108 / 23%) 0px -36px 30px 0px inset,
-        rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-        rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
-        rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #8892B0;
+    }
+    
+    .login-container {
+      background-color: #112240;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       padding: 40px;
-      max-width: 400px;
-      margin: 0 auto;
-      border-radius: 30px;
       width: 100%;
-      text-align: center;
-      margin: 0 auto;
+      max-width: 400px;
     }
     
     .login-form {
@@ -28,58 +32,48 @@
     }
     
     .heading {
-      color: #ffffff;
-      font-weight: 500;
-      font-size: 40px;
-      margin-bottom: 5px;
+      color: #CCD6F6;
+      font-weight: 600;
+      font-size: 28px;
+      margin-bottom: 10px;
+      text-align: center;
     }
     
     .paragraph {
-      color: #ffffff;
+      color: #8892B0;
       font-weight: 400;
-      font-size: 15px;
-      margin-bottom: 15px;
+      font-size: 16px;
+      margin-bottom: 25px;
+      text-align: center;
     }
     
     .input-group {
       margin-bottom: 20px;
     }
     
-    .input-group {
-      display: flex;
-      justify-content: center;
-    }
-
     .input-group input {
-      background: none;
-      border: 1px solid #000000;
-      outline: none;
-      padding: 15px 23px;
-      font-size: 16px;
-      border-radius: 16px;
-      background: #ffffff;
-      color: #ffffff;
       width: 100%;
-      box-shadow: rgb(136 136 136 / 17%) 0px -23px 25px 0px inset,
-        rgb(81 81 81 / 23%) 0px -36px 30px 0px inset,
-        rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-        rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
-        rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+      padding: 12px;
+      border: 1px solid #233554;
+      border-radius: 4px;
+      font-size: 14px;
+      background-color: #0A192F;
+      color: #CCD6F6;
+      transition: border-color 0.3s ease;
     }
     
     .input-group input:focus {
-      border-color: #0173ed;
+      border-color: #64FFDA;
       outline: none;
     }
     
     button {
-      width: 50%;
-      margin: 0 auto;
-      padding: 15px;
+      width: 100%;
+      padding: 12px;
       border: none;
-      border-radius: 8px;
-      background-color: #0173ed;
-      color: #ffffff;
+      border-radius: 4px;
+      background-color: #64FFDA;
+      color: #0A192F;
       font-size: 16px;
       font-weight: 500;
       cursor: pointer;
@@ -87,39 +81,36 @@
     }
     
     button:hover {
-      background-color: #003063;
+      background-color: #4CD2B7;
     }
     
     .bottom-text {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-      color: #ffffff;
-      font-size: 15px;
-      font-weight: 400;
+      margin-top: 25px;
+      text-align: center;
+      font-size: 14px;
+      color: #8892B0;
     }
     
     .bottom-text a {
-      color: #0173ed;
+      color: #64FFDA;
       text-decoration: none;
       transition: color 0.3s ease;
     }
     
     .bottom-text a:hover {
-      color: #3f95f2;
+      color: #4CD2B7;
     }
   </style>
 </head>
 <body>
   <div class="login-container">
     <form class="login-form" action="/login" method="POST">
-      <p class="heading">Login</p>
-      <p class="paragraph">Login to your account</p>
+      <h1 class="heading">Welcome back</h1>
+      <p class="paragraph">Please enter your details to sign in</p>
       <div class="input-group">
         <input
-          required=""
-          placeholder="Username"
+          required
+          placeholder="Email or username"
           name="username"
           id="username"
           type="text"
@@ -127,20 +118,19 @@
       </div>
       <div class="input-group">
         <input
-          required=""
+          required
           placeholder="Password"
           name="password"
           id="password"
           type="password"
         />
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Sign In</button>
       <div class="bottom-text">
-        <p>Don't have an account? <a href="/register">Sign Up</a></p>
+        <p>Don't have an account? <a href="/register">Sign up</a></p>
         <p><a href="#">Forgot password?</a></p>
       </div>
     </form>
   </div>
 </body>
 </html>
-
