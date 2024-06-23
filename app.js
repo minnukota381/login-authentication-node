@@ -1,23 +1,24 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const path = require('path');
-const authRoutes = require('./src/routes/authRoutes');
+const session = require('express-session');
+require('dotenv').config();
 
-dotenv.config();
+const authRoutes = require('./src/routes/authRoutes');
 
 const app = express();
 const PORT = 3000;
 
-// Middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Set the views directory
-app.set('views', path.join(__dirname, 'src', 'views'));
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-// MongoDB connection
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false }
+}));
+
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -27,8 +28,7 @@ mongoose.connect(process.env.MONGO_URI, {
     console.error('Error connecting to MongoDB Atlas', err);
 });
 
-// Routes
-app.use('/', authRoutes);
+app.use(authRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
