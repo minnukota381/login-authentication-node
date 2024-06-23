@@ -76,20 +76,3 @@ body {
   button:hover {
     background-color: #4CD2B7;
   }
-  
-  .bottom-text {
-    margin-top: 25px;
-    text-align: center;
-    font-size: 14px;
-    color: #8892B0;
-  }
-  
-  .bottom-text a {
-    color: #64FFDA;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .bottom-text a:hover {
-    color: #4CD2B7;
-  }
