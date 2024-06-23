@@ -26,9 +26,3 @@ To use the application, follow these steps:
 npm start
 ```
 
-## Contributing
-
-## License
-
-## Questions
-If you have any questions or need further clarification, please don't hesitate to ask. You can reach
