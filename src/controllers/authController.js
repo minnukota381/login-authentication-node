@@ -69,3 +69,8 @@ exports.logout = (req, res) => {
         res.redirect('/');
     });
 };
+
+router.post('/forgot-password', (req, res) => {
+    const { email } = req.body;
+    res.send(`Password reset link sent to ${email}`);
+});
