@@ -13,6 +13,9 @@ body {
   border: none;
   margin-top: 2rem;
 }
+.card-body {
+  color: #FFFFFF; /* This ensures the text inside the card body is white */
+}
 .btn-logout {
   background-color: #64FFDA;
   color: #0A192F;
@@ -22,4 +25,3 @@ body {
   background-color: #4CD2B7;
   color: #0A192F;
 }
-  
