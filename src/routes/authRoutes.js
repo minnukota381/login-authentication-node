@@ -1,37 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User'); // Assuming you have a User model
+const authController = require('../controllers/authController');
+const bcrypt = require('bcryptjs');
+const User = require('../models/User');
 
-router.get('/login', (req, res) => {
-    res.render('login');
-});
+router.get('/', authController.getLogin);
+router.get('/register', authController.getRegister);
+router.post('/register', authController.postRegister);
+router.post('/login', authController.postLogin);
+router.post('/logout', authController.logout);
 
-router.get('/register', (req, res) => {
-    res.render('register');
-});
+// Route to show forgot password form
+router.get('/forgot-password', authController.getForgotPassword);
 
-router.get('/forgot-password', (req, res) => {
-    res.render('forgot-password');
-});
+// Route to handle submission of forgot password form
+router.post('/forgot-password', authController.postForgotPassword);
 
-router.post('/forgot-password', async (req, res) => {
-    const { fullName, username } = req.body;
-    const user = await User.findOne({ fullName, username });
+// Route to show reset password form
+router.get('/reset-password', authController.getResetPassword);
 
-    if (user) {
-        res.render('reset-password', { userId: user._id });
-    } else {
-        res.render('forgot-password', { error: 'User not found. Please check your details.' });
-    }
-});
-
-router.post('/reset-password', async (req, res) => {
-    const { userId, password } = req.body;
-    const bcrypt = require('bcryptjs');
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    await User.findByIdAndUpdate(userId, { password: hashedPassword });
-    res.redirect('/login');
-});
+// Route to handle submission of reset password form
+router.post('/reset-password', authController.postResetPassword);
 
 module.exports = router;

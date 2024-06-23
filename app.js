@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const path = require('path'); // Import path module for setting views directory
+const path = require('path');
 require('dotenv').config();
 
 const authRoutes = require('./src/routes/authRoutes');
@@ -9,15 +9,11 @@ const authRoutes = require('./src/routes/authRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-
-// Set views directory and view engine
 app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
-// Session middleware
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -25,7 +21,6 @@ app.use(session({
     cookie: { secure: process.env.NODE_ENV === 'production' } // Secure cookie in production
 }));
 
-// MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -39,7 +34,6 @@ mongoose.connect(process.env.MONGO_URI, {
 // Routes
 app.use(authRoutes);
 
-// Start server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
