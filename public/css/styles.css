@@ -1,2 +1,25 @@
-
+body {
+  background-color: #0A192F;
+  color: #CCD6F6;
+}
+.navbar {
+  background-color: #112240;
+}
+.navbar-brand, .nav-link {
+  color: #64FFDA !important;
+}
+.card {
+  background-color: #112240;
+  border: none;
+  margin-top: 2rem;
+}
+.btn-logout {
+  background-color: #64FFDA;
+  color: #0A192F;
+  border: none;
+}
+.btn-logout:hover {
+  background-color: #4CD2B7;
+  color: #0A192F;
+}
   
