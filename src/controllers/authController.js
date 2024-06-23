@@ -119,7 +119,7 @@ exports.postResetPassword = async (req, res) => {
         user.password = hashedPassword;
         await user.save();
 
-        res.send('Password updated successfully');
+        res.redirect('/'); // Redirect to login page after successful password reset
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
