@@ -41,7 +41,10 @@ app.use(session({
     secret: process.env.SESSION_SECRET, // Secret used to sign the session ID cookie
     resave: false, // Do not save session data if session is unmodified
     saveUninitialized: false, // Do not save new, uninitialized sessions
-    cookie: { secure: process.env.NODE_ENV === 'production' } // Secure cookie in production environment
+    cookie: { 
+        secure: process.env.NODE_ENV === 'production', // Secure cookie in production environment
+        sameSite: 'strict' // Mitigate CSRF attacks by preventing cross-origin access
+    }
 }));
 
 // Connect to MongoDB Atlas
