@@ -1,4 +1,4 @@
-/*......................................................................................................
+/*--------------------------------------------------------------------------------------------------------
 Author: Minnu
 username : @minnukota381
 Date: 2023-05-01
@@ -7,7 +7,7 @@ Language: JavaScript
 Description: This is a Node.js Express application setup for handling user authentication.
              It connects to MongoDB Atlas, uses EJS for views, and includes session management.
              Routes for registration, login, logout, forgot password, and reset password are defined.
-..........................................................................................................*/
+----------------------------------------------------------------------------------------------------------*/
 
 
 // Import required modules
