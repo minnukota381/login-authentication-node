@@ -33,28 +33,33 @@ This project is a web application built with Node.js that implements user authen
 ## Installation
 
 1. **Clone the repository**:
+
     ```sh
     git clone https://github.com/minnukota381/login-authentication-node.git
     cd login-authentication-node
     ```
 
 2. **Install dependencies**:
+
     ```sh
     npm install
     ```
 
 3. **Set up environment variables**:
     Create a `.env` file in the root directory and add the following variables:
+
     ```env
     MONGODB_URI=<your-mongodb-connection-string>
-    PORT=3000
+    SESSION_SECRET=<your-session-secret>
     ```
 
 4. **Start the server**:
+
     ```sh
     npm start
     ```
-    The server will start running on `http://localhost:3000`.
+
+    The server will start on port 3000 by default. You can access it at `http://localhost:3000`.
 
 ## Usage
 
@@ -76,7 +81,7 @@ This project is a web application built with Node.js that implements user authen
 
 ## Folder Structure
 
-```
+```sh
 login-authentication-node/
 ├── controllers/
 │   └── authController.js
@@ -90,11 +95,18 @@ login-authentication-node/
 │   ├── forgot-password.ejs
 │   └── reset-password.ejs
 ├── public/
+│   ├── images/
+│   │   ├── forget.svg
+│   │   └── login.svg
+│   │   └── register.svg
 │   └── css/
 │       └── login.css
+│       └── register.css
+│       └── reset-password.css
 ├── .env
 ├── .gitignore
 ├── app.js
+├── package-lock.json
 ├── package.json
 └── README.md
 ```
